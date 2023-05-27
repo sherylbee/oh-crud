@@ -11,10 +11,21 @@ const AddUser = ({users, onAddUser})=>{
         updateUserAsync({...user, [id]:value})
     }
     const addUserHandler = (e)=>{
+     
         e.preventDefault();
         user.key = user.dataKey = Math.floor(Math.random()*1000);
-        onAddUser('add', user)
-        updateUserAsync({username:'', age:''})
+        let userValues = [];
+           for(let key in user){
+                if(!user[key]){
+                    userValues = [...userValues, key]
+                    console.log(`please submit ${key}`)
+                }
+            }
+            if(!userValues.length){
+                onAddUser('add', user)
+                updateUserAsync({username:'', age:''})
+            }
+
     }
     return(
         <form onSubmit={addUserHandler}>
