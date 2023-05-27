@@ -19,11 +19,17 @@ const AddUser = ({users, onAddUser})=>{
     return(
         <form onSubmit={addUserHandler}>
 
-            <label htmlFor="username">Username</label>
-            <input value={user?.username} type="text" id="username" onChange={(e)=>{return updateUser(e.target)}}/>
+            {/* <label htmlFor="username">Username</label> */}
+            <div className="input username">
+                <input placeholder="Username" value={user?.username} type="text" id="username" onChange={(e)=>{return updateUser(e.target)}}/>
+            </div>
+       
 
-            <label htmlFor="age">Age</label>
-            <input value={user?.age} type="number" id="age" onChange={(e)=>{return updateUser(e.target)}}/>
+            {/* <label htmlFor="age">Age</label> */}
+            <div className="input age">
+                <input placeholder="Age" value={user?.age} type="number" id="age" onChange={(e)=>{return updateUser(e.target)}}/>
+            </div>
+       
             
             <button type="submit">Add User</button>
         </form>

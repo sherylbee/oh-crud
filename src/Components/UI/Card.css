@@ -27,6 +27,7 @@
     animation: slideDown 1s cubic-bezier(0.68,-0.55,0.51,1.33);
     /* animation: slideDown 1s cubic-bezier(0.15,-0.85,0.51,1.43); */
     animation-fill-mode: forwards;
+    z-index: 10;
 }
 
 @keyframes slideDown {

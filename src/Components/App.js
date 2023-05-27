@@ -37,8 +37,10 @@ function Modal({type, open, close, term}){
         <h1>You're about to toast this user!!!</h1>
         <br />
         <h3>...you cool with that?</h3>
-        <button className='yup' onClick={()=>dismissModal('y')}>Yup</button>
-        <button className='nope' onClick={()=>dismissModal('n')}>Nope</button>
+        <div className="button-wrapper">
+          <button className='yup' onClick={()=>dismissModal('y')}>Yup</button>
+          <button className='nope' onClick={()=>dismissModal('n')}>Nope</button>
+        </div>
       </div>
     </Card>
 
