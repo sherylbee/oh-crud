@@ -49,8 +49,10 @@ input:focus, :focus-visible{
     outline-style: solid;
     border: none;
     padding: 4px 7px;
-    width: -moz-fit-content;
-    width: fit-content;
+    /* width: -moz-fit-content; */
+    /* width: fit-content; */
+
+    width: -webkit-fill-available;
 }
 
 .input:focus-within::before{

@@ -1,7 +1,7 @@
 import {React, useState} from "react";
 import './AddUser.css'
 
-const AddUser = ({users, onAddUser})=>{
+const AddUser = ({users, onAddUser, onNotifyParent})=>{
     const [user, updateUserAsync] = useState({username:'', age:''});
     
     const updateUser = (target)=>{
@@ -11,21 +11,24 @@ const AddUser = ({users, onAddUser})=>{
         updateUserAsync({...user, [id]:value})
     }
     const addUserHandler = (e)=>{
-     
         e.preventDefault();
         user.key = user.dataKey = Math.floor(Math.random()*1000);
+        let warningMessage = ""
         let userValues = [];
            for(let key in user){
                 if(!user[key]){
                     userValues = [...userValues, key]
-                    console.log(`please submit ${key}`)
                 }
             }
             if(!userValues.length){
                 onAddUser('add', user)
                 updateUserAsync({username:'', age:''})
+                onNotifyParent(warningMessage)
             }
-
+            else{
+                warningMessage = `Please submit ${userValues.join(' and ')}...`
+                onNotifyParent(warningMessage)
+            }
     }
     return(
         <form onSubmit={addUserHandler}>

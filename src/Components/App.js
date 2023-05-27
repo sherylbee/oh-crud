@@ -56,6 +56,7 @@ function App() {
   let [users, updateUsers] = useState([]);
   let [selectedUser, updateSelectedUser] = useState({username:'', age:'', key:'', dataKey:''})
   let [openModal, updateOpenModal] = useState(false) 
+  let [displayMsg, updateDisplayMsg] = useState('') 
   const handleCloseModal = (accept, user)=>{
     updateOpenModal(false)
     if(!accept) return;
@@ -80,14 +81,17 @@ function App() {
         updateOpenModal(true)
     }
   }
+  const showMessage = (msg)=>{
+    updateDisplayMsg(msg)
+  }
 
   let usersElementList = users.map(user=><User removeUser={scheduleUpdateUser} name={user.username} age={user.age} key={user.key} dataKey={user.key}/>)
 
   return (
     <div className="App">
       <Modal type="warning" open={openModal} close={handleCloseModal} term={selectedUser}/>
-      <Card>
-        <AddUser users={users} onAddUser={scheduleUpdateUser}/>
+      <Card msg={displayMsg} className="addUser">
+        <AddUser users={users} onAddUser={scheduleUpdateUser} onNotifyParent={showMessage}/>
       </Card>
       <h1 style={{color:'orange', textDecoration: 'underline'}}>Added Users</h1>
 
