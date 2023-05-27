@@ -1,4 +1,5 @@
 import './App.css';
+import './Users/User.css';
 import AddUser  from './Users/AddUser';
 import Card from './UI/Card';
 import {React, useEffect, useState} from 'react';
@@ -10,8 +11,12 @@ function User({name, age, dataKey, removeUser}){
   }
   return (
     <div className='user' style={{color:'white'}} onClick={(e)=>handleClick(e)}>
-        <span className="username">{name}</span>
-        <span className="age">{age}</span>
+    <div>
+      <span>Username: </span><span className="username">{name}</span>
+    </div>
+    <div>
+      <span>Age: </span><span className="age">{age}</span>
+    </div>
     </div>
   )
 }
@@ -84,6 +89,8 @@ function App() {
       <Card>
         <AddUser users={users} onAddUser={scheduleUpdateUser}/>
       </Card>
+      <h1 style={{color:'orange', textDecoration: 'underline'}}>Added Users</h1>
+
       {usersElementList}
     </div>
   );

@@ -1,0 +1,10 @@
+.user{
+    cursor: pointer;
+    border: 1px solid whitesmoke;
+    width: 25%;
+    margin: auto;   
+    margin-bottom: 1em;
+    padding: 1em;
+
+    
+}

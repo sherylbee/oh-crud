@@ -16,6 +16,23 @@ body {
   width: 60%;
   margin: auto;
 }
+button{
+  width: 7rem;
+  height: 2rem;
+  font-size: 1em;
+  background-color: #1F1F2F;
+  border: .1px dotted #d5a357;
+  border-radius: 5px;
+  box-shadow: 2px 0px 6px 0px bisque;
+  color: white;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+button:active{
+  opacity: .8;
+  transform: scale(95%);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
