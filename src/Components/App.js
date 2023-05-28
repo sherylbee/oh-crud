@@ -23,21 +23,21 @@ function User({name, age, dataKey, removeUser}){
 
 
 
-function Modal({type, open, close, term}){
-  const [showModal, updateShowModal] = useState(open)
+function Modal({type, modalState, close, term}){
+  const [showModal, updateShowModal] = useState(modalState)
 
   useEffect(() => {
-    updateShowModal(open)
-  }, [open])
+    updateShowModal(modalState)
+  }, [modalState])
 
   function dismissModal(okay){
-    updateShowModal(false)
+    updateShowModal('hide')
     close(true, term)
   }
   
   const classes = `${type?type:""}` ;
   return(
-    <Card className={`modal ${showModal && 'show'}`}>  
+    <Card className={`modal ${showModal}`}>  
       <div className={classes}>
         <h1>You're about to toast this user!!!</h1>
         <br />
@@ -55,10 +55,11 @@ function Modal({type, open, close, term}){
 function App() {
   let [users, updateUsers] = useState([]);
   let [selectedUser, updateSelectedUser] = useState({username:'', age:'', key:'', dataKey:''})
-  let [openModal, updateOpenModal] = useState(false) 
+  const ModalStates = ['show', 'hide', 'hidden']
+  let [modalState, updateModalState] = useState(ModalStates[2]) 
   let [displayMsg, updateDisplayMsg] = useState('') 
   const handleCloseModal = (accept, user)=>{
-    updateOpenModal(false)
+    updateModalState(ModalStates[1])
     if(!accept) return;
     const usersCopy = [...users];//making shallow copy so that react has new reference and recognizes the update
     const idx = usersCopy.findIndex(existingUser=> user.dataKey === existingUser.dataKey);
@@ -78,7 +79,7 @@ function App() {
         break;
       case 'remove':
         updateSelectedUser(user)
-        updateOpenModal(true)
+        updateModalState(ModalStates[0])
     }
   }
   const showMessage = (msg)=>{
@@ -89,7 +90,7 @@ function App() {
 
   return (
     <div className="App">
-      <Modal type="warning" open={openModal} close={handleCloseModal} term={selectedUser}/>
+      <Modal type="warning" modalState={modalState} close={handleCloseModal} term={selectedUser}/>
       <Card msg={displayMsg} className="addUser">
         <AddUser users={users} onAddUser={scheduleUpdateUser} onNotifyParent={showMessage}/>
       </Card>

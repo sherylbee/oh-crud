@@ -20,13 +20,10 @@
 }
 
 .card.modal{
-    /* max-width: fit-content; */
-
     z-index: 10;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -130%);
-    animation: slideUp 1s cubic-bezier(0.68,-0.55,0.51,1.33);
 }
 
 .card .message{
@@ -63,8 +60,17 @@
 
 }
 
+.card.modal.hidden{
+    z-index: 10;
+    top: -130%
+}
 .card.modal.show{
     animation: slideDown .7s cubic-bezier(0.68,-0.55,0.51,1.33);
+    animation-fill-mode: forwards;
+    z-index: 10;
+}
+.card.modal.hide{
+    animation: slideUp 1s cubic-bezier(0.68,-0.55,0.51,1.33);
     animation-fill-mode: forwards;
     z-index: 10;
 }
