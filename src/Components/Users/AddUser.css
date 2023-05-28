@@ -62,7 +62,6 @@ input:focus, :focus-visible{
     transition: all .5s;
 
 }
-/* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
