@@ -1,5 +1,6 @@
 import './App.css';
 import './Users/User.css';
+import Data from '../Data/dummyUsers';
 import AddUser  from './Users/AddUser';
 import Card from './UI/Card';
 import {React, useEffect, useState} from 'react';
@@ -37,23 +38,29 @@ function Modal({type, modalState, close, term}){
   
   const classes = `${type?type:""}` ;
   return(
-    <Card className={`modal ${showModal}`}>  
-      <div className={classes}>
-        <h1>You're about to toast this user!!!</h1>
-        <br />
-        <h3>...you cool with that?</h3>
-        <div className="button-wrapper">
-          <button className='yup' onClick={()=>dismissModal(true)}>Yup</button>
-          <button className='nope' onClick={()=>dismissModal(false)}>Nope</button>
-        </div>
+    <>
+      {showModal === 'show' && 
+      <div>
+        <div className="backdrop"></div>
+        <Card className={`modal ${showModal}`}>  
+            <div className={classes}>
+              <h1>You're about to toast this user!!!</h1>
+              <br />
+              <h3>...you cool with that?</h3>
+              <div className="button-wrapper">
+                <button className='yup' onClick={()=>dismissModal(true)}>Yup</button>
+                <button className='nope' onClick={()=>dismissModal(false)}>Nope</button>
+              </div>
+            </div>
+          </Card>
       </div>
-    </Card>
-
+      }
+    </>
   )
 }
 
 function App() {
-  let [users, updateUsers] = useState([]);
+  let [users, updateUsers] = useState(Data);
   let [selectedUser, updateSelectedUser] = useState({username:'', age:'', key:'', dataKey:''})
   const ModalStates = ['show', 'hide', 'hidden']
   let [modalState, updateModalState] = useState(ModalStates[2]) 

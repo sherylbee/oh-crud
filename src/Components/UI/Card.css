@@ -74,6 +74,14 @@
     animation-fill-mode: forwards;
     z-index: 10;
 }
+div.backdrop{
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    background-color: rgba(4, 12, 41, 0.455);
+    z-index: 9;
+    top: 0;
+}
 
 @keyframes slideDown {
     from{
