@@ -39,22 +39,18 @@ function Modal({type, modalState, close, term}){
   const classes = `${type?type:""}` ;
   return(
     <>
-      {showModal === 'show' && 
-      <div>
-        <div className="backdrop"></div>
-        <Card className={`modal ${showModal}`}>  
-            <div className={classes}>
-              <h1>You're about to toast this user!!!</h1>
-              <br />
-              <h3>...you cool with that?</h3>
-              <div className="button-wrapper">
-                <button className='yup' onClick={()=>dismissModal(true)}>Yup</button>
-                <button className='nope' onClick={()=>dismissModal(false)}>Nope</button>
-              </div>
+      {showModal === 'show' && <div className="backdrop"></div>}
+      <Card className={`modal ${showModal}`}>  
+          <div className={classes}>
+            <h1>You're about to toast this user!!!</h1>
+            <br />
+            <h3>...you cool with that?</h3>
+            <div className="button-wrapper">
+              <button className='yup' onClick={()=>dismissModal(true)}>Yup</button>
+              <button className='nope' onClick={()=>dismissModal(false)}>Nope</button>
             </div>
-          </Card>
-      </div>
-      }
+          </div>
+        </Card>
     </>
   )
 }
