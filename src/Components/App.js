@@ -5,13 +5,14 @@ import AddUser  from './Users/AddUser';
 import Card from './UI/Card';
 import {React, useEffect, useState} from 'react';
 
-function User({name, age, dataKey, removeUser}){
+function User({name, age, dataKey, removeUser, className}){
+  let classes = `user ${className?className:""}`
   function handleClick(e){
     e.preventDefault();
     removeUser('remove', {name, age, dataKey})
   }
   return (
-    <div className='user' style={{color:'white'}} onClick={(e)=>handleClick(e)}>
+    <div className={classes} style={{color:'white'}} onClick={(e)=>handleClick(e)}>
     <div>
       <span>Username: </span><span className="username">{name}</span>
     </div>
@@ -66,7 +67,8 @@ function App() {
     if(!accept) return;
     const usersCopy = [...users];//making shallow copy so that react has new reference and recognizes the update
     const idx = usersCopy.findIndex(existingUser=> user.dataKey === existingUser.dataKey);
-    usersCopy.splice(idx, 1)
+    usersCopy[idx].className = 'deleted';
+    // usersCopy.splice(idx, 1)
     updateUsers(usersCopy)
   }
 
@@ -89,7 +91,7 @@ function App() {
     updateDisplayMsg(msg)
   }
 
-  let usersElementList = users.map(user=><User removeUser={scheduleUpdateUser} name={user.username} age={user.age} key={user.key} dataKey={user.key}/>)
+  let usersElementList = users.map(user=><User removeUser={scheduleUpdateUser} name={user.username} age={user.age} key={user.key} dataKey={user.key} className={user.className}/>)
 
   return (
     <div className="App">

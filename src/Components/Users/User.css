@@ -6,4 +6,10 @@
     margin-bottom: 1em;
     padding: 1em;
     overflow: scroll;
+    transition: all 1s cubic-bezier(.47,-0.61,.29,1.29);
 }
+.user.deleted{
+    transform: translateX(-200vw);
+}
+
+
