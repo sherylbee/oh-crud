@@ -32,7 +32,7 @@ function Modal({type, modalState, close, term}){
 
   function dismissModal(okay){
     updateShowModal('hide')
-    close(true, term)
+    close(okay, term)
   }
   
   const classes = `${type?type:""}` ;
@@ -43,8 +43,8 @@ function Modal({type, modalState, close, term}){
         <br />
         <h3>...you cool with that?</h3>
         <div className="button-wrapper">
-          <button className='yup' onClick={()=>dismissModal('y')}>Yup</button>
-          <button className='nope' onClick={()=>dismissModal('n')}>Nope</button>
+          <button className='yup' onClick={()=>dismissModal(true)}>Yup</button>
+          <button className='nope' onClick={()=>dismissModal(false)}>Nope</button>
         </div>
       </div>
     </Card>

@@ -51,8 +51,7 @@ input:focus, :focus-visible{
     padding: 4px 7px;
     /* width: -moz-fit-content; */
     /* width: fit-content; */
-
-    width: -webkit-fill-available;
+    /* width: -webkit-fill-available; */
 }
 
 .input:focus-within::before{
