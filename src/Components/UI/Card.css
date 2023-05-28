@@ -64,16 +64,19 @@
     z-index: 10;
     top: -130%
 }
+
 .card.modal.show{
     animation: slideDown .7s cubic-bezier(0.68,-0.55,0.51,1.33);
     animation-fill-mode: forwards;
     z-index: 10;
 }
+
 .card.modal.hide{
     animation: slideUp 1s cubic-bezier(0.68,-0.55,0.51,1.33);
     animation-fill-mode: forwards;
     z-index: 10;
 }
+
 div.backdrop{
     position: fixed;
     height: 100%;
@@ -100,3 +103,30 @@ div.backdrop{
         top: -130%
     }
 } 
+
+@media screen and (max-width: 1100px) {
+    body{
+        background-color: hotpink ;
+    }
+    .card.modal{
+        transform: translate(-50%, -10%);
+    }
+    @keyframes slideDown {
+        from{
+            top: -100%
+        }
+        to{
+            top: 10%;
+        }
+    } 
+    @keyframes slideUp {
+        from{
+            top: 10%;
+        }
+        to{
+            top: -100%
+        }
+    } 
+}
+
+
